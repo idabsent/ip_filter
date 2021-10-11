@@ -1,0 +1,11 @@
+bin
+lib
+CMakeFiles
+CMakeCache.txt
+_CPack_Packages
+cmake_install.cmake
+Makefile
+install_manifest.txt
+CPackSourceConfig.cmake
+CPackConfig.cmake
+*.deb
