@@ -9,7 +9,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install cmake
       - uses: actions/checkout@v2
       - name: create cmake files
-        run:  cmake ./
+        run:  cmake ./ -DPATCH_VERSION=${{ github.run_number }}
       - name: Build project to binary files
         run:  cmake --build ./
       - name: Build deb package
@@ -31,6 +31,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./ip_filter-v.${{ github.run_number }}.deb
-          asset_name: ip_filter-v.${{ github.run_number }}.deb
+          asset_path: ./ip_filter-0.0.${{ github.run_number }}.deb
+          asset_name: ip_filter-0.0.${{ github.run_number }}.deb
           asset_content_type: application/vnd.debian.binary-package
