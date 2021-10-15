@@ -8,7 +8,7 @@
 class ip_filter{
     private:
         std::vector<std::array<int, 4>> ip_pool;
-
+        static void pool_sort(std::vector<std::array<int, 4>>& ip_pool);
     public:
         /*
         ** Initialize list of ip with a string vector

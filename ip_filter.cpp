@@ -7,6 +7,7 @@ ip_filter::ip_filter(const std::vector<std::string>& ip_pool){
         std::array<int, 4> ip = split(ip_str, '.');
         this->ip_pool.push_back(ip);
     }
+    pool_sort(this->ip_pool);
 }
 
 std::vector<std::array<int, 4>> ip_filter::filter(int first_byte){
@@ -60,4 +61,16 @@ std::array<int, 4> ip_filter::split(const std::string& ip_str, char sym){
     auto ip_byte = ip_str.substr(start, stop-start);
     ip.at(i) = ip_byte == "" ? 0 : std::stoi(ip_byte);
     return ip;
+}
+
+void ip_filter::pool_sort(std::vector<std::array<int, 4>>& ip_pool){
+    std::sort(ip_pool.begin(), ip_pool.end(),
+              [](std::array<int, 4> ip_first, std::array<int, 4> ip_second)->bool{
+                for (int i = 0; i < 4; i++)
+                    if (ip_first.at(i) != ip_second.at(i)){
+                        bool greater = ip_first.at(i) > ip_second.at(i);
+                        return greater;
+                    }
+                return false;
+              });
 }

@@ -16,15 +16,13 @@ int main(int argc, char const *argv[])
 {
         try
         {
-                std::cout << "\t\tIP ADDRESS FILTER";
+                std::cout << "\t\tIP ADDRESS FILTER\n";
                 std::vector<std::string> ip_pool;
                 std::ifstream file(file_name);
 
                 for (std::string line;std::getline(file, line);){
-                        std::cout << "line: " << line << std::endl;
                         std::string::size_type ip_end_pos = line.find_first_of('\t');
                         std::string ip = line.substr(0, ip_end_pos);
-                        std::cout << ip << std::endl;
                         ip_pool.push_back(ip);
                 }
 
